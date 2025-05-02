@@ -4,6 +4,7 @@ import subway.domain.Station;
 import subway.domain.StationRepository;
 import subway.service.ResultRoute;
 import subway.service.SearchRoute;
+import subway.view.OutputView;
 
 public class RouteController {
 
@@ -14,12 +15,12 @@ public class RouteController {
         Station destination = StationRepository.findbyName(destinationName);
 
         if (departure == null || destination == null) {
-            // TODO: View will print out error messgae.
+            OutputView.printError("존재하지 않는 역입니다.");
             return;
         }
 
         ResultRoute result = searchRoute.calcShortestDistance(departure, destination);
-        // TODO: View will print out result.
+        OutputView.printResult(result);
     }
 
     public void searchMinimumTime(String departName, String destinationName) {
@@ -27,10 +28,10 @@ public class RouteController {
         Station destination = StationRepository.findbyName(destinationName);
 
         if (departure == null || destination == null) {
-            // TODO: View will print out error messgae.
+            OutputView.printError("존재하지 않는 역입니다.");
             return;
         }
         ResultRoute result = searchRoute.calcMinimumTime(departure, destination);
-        // TODO: View will print out result.
+        OutputView.printResult(result);
     }
 }
