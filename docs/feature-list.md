@@ -51,6 +51,16 @@
  - Receives results from `service` and forwards them to `View`.
  - It only serves to control the flow.
 
+### 1. AppContorller
+ - Controls the overall program flow (entry point controller)
+ - Delegates route search task to RouteController if needed.
+ - Terminates program on user's exit command.
+
+### 2. RouteController
+ - Handles route search logic only (sub flow controller)
+ - Receives source and destination from AppController.
+ - Calls SearchRoute service to calculate routes.
+
 ## [ View: Input ] Getting inputs from the prompt (= User)
 
 ### I-1. Select the desired option1
