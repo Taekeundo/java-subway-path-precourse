@@ -12,11 +12,13 @@ public class InputView {
 
     public String readMainMenu() {
         OutputView.printMainMenu();
+        OutputView.printSelectOption();
         return scanner.nextLine();
     }
 
     public String readSearchType() {
         OutputView.printSearchType();
+        OutputView.printSelectOption();
         return scanner.nextLine();
     }
 

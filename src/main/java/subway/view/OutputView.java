@@ -23,11 +23,15 @@ public class OutputView {
     }
 
     public static void printError(String message) {
-        System.out.println("[ERROR] " + message);
+        System.out.println("\n[ERROR] " + message);
     }
 
     public static void printProgramEnd() {
         System.out.println("프로그램을 종료합니다.");
+    }
+
+    public static void printSelectOption() {
+        System.out.println("\n## 원하는 기능을 선택하세요.");
     }
 
     public static void printResult(ResultRoute result) {
