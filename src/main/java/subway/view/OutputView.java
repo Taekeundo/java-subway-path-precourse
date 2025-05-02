@@ -26,6 +26,10 @@ public class OutputView {
         System.out.println("[ERROR] " + message);
     }
 
+    public static void printProgramEnd() {
+        System.out.println("프로그램을 종료합니다.");
+    }
+
     public static void printResult(ResultRoute result) {
         System.out.println("\n## 조회 결과");
         printPath(result.getStations());
