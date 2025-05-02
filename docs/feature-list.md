@@ -4,25 +4,46 @@
 ### 1. Station
  - Description:
     A class containing information and methods for one station.
+    = Represents a single subway station with its name.
  - Role:
-    Provides comparison or matching methods for route calculations   
+    Provides comparison or matching methods for route calculations
+    = Can be compared by its name.
  - Components:
-    stationName
-    stationIdentity?
+   `name` (stationName)
 
 ### 2. Line
- - A class containing information and methods for one subway line.
+ - Description:
+    A class containing information and methods for one subway line.
+    = Represents a subway line, contains and manages a sequence of stations.
+ - Role:
+   Save the ordered list of stations belonging to the given subway line.
+    = Provides methods to add stations and retrieve the current list of stations.
+ - Components
+    name(lineName)
+    stations(list of station in order)
 
 ### 3. StationRepository
- - A class containing information and methods for the entire subway station.
+ - Description:
+    A class containing information and methods for the entire subway station.
+    = Manages and stores all stations.
+ - Role: 5 Methods
+    Show, add, delete, deleteAll, Search(findByName) stations.
 
 ### 4. LineRepository
- - A class containing information and methods for all subway lines.
+ - Description:
+    A class containing information and methods for all subway lines.
+    = Manages and stores all subway lines.
+ - Role: 5 Methods
+   Show, add, delete, deleteAll, Search(findByName) lines.
 
 ## [ Service ]
-### 1. SearchRoute
+### 1. SearchRoute // Calculate only
  - Calculate `shortest path` between stations based on distance.
  - Calculate `minimum travel time` between stations.
+
+### 2. ResultRoute // Store only
+ - Store calculatedPath, totalDistance, totalTime.
+ - Return results to the `Controller`. 
 
 ## [ Controller ]
  - Receives userInput via View and validates.
