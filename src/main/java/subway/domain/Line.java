@@ -7,6 +7,7 @@ import java.util.Collections;
 public class Line {
     private String name;
     private List<Station> stations = new ArrayList<>();
+    private List<Section> sections = new ArrayList<>();
 
     public Line(String name) {
         this.name = name;
@@ -16,11 +17,15 @@ public class Line {
         return name;
     }
 
-    public void addStation(String stationName) {
-        stations.add(new Station(stationName));
+    public void addStation(Station stationName) {
+        stations.add(stationName);
     }
 
     public List<Station> getStations() {
         return Collections.unmodifiableList(stations);
+    }
+
+    public void addSection(Station from, Station to, int distance, int time) {
+        sections.add(new Section(from, to, distance, time));
     }
 }
