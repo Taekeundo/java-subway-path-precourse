@@ -1,5 +1,7 @@
 package subway.controller;
 
+import subway.domain.Station;
+import subway.domain.StationRepository;
 import subway.view.InputView;
 import subway.view.OutputView;
 
@@ -29,21 +31,46 @@ public class AppController {
     }
 
     private void processRouteSearch() {
-        String searchType = inputView.readSearchType();
+        while (true) {
+            String searchType = inputView.readSearchType();
 
-        if (searchType.equalsIgnoreCase("B")) {
-            return;
+            if (searchType.equalsIgnoreCase("B")) {
+                return;
+            }
+
+            String departureStationName = inputView.readDepartureStation();
+            String destinationStationName = inputView.readDestinationStation();
+
+            Station departure = StationRepository.findbyName(departureStationName);
+            Station destination = StationRepository.findbyName(destinationStationName);
+
+            if (!validateStations(departure, destination)) {
+                continue;
+            }
+
+            if (searchType.equals("1")) {
+                routeController.searchShortestDistance(departureStationName, destinationStationName);
+            }
+
+            if (searchType.equals("2")) {
+                routeController.searchMinimumTime(departureStationName, destinationStationName);
+            }
+
+            break;
+        }
+    }
+
+    private boolean validateStations(Station departure, Station destination) {
+        if (departure == null || destination == null) {
+            OutputView.printError("존재하지 않는 역입니다.");
+            return false;
         }
 
-        String departureStationName = inputView.readDepartureStation();
-        String destinationStationName = inputView.readDestinationStation();
-
-        if (searchType.equals("1")) {
-            routeController.searchShortestDistance(departureStationName, destinationStationName);
+        if (departure.equals(destination)) {
+            OutputView.printError("출발역과 도착역이 동일합니다.");
+            return false;
         }
 
-        if (searchType.equals("2")) {
-            routeController.searchMinimumTime(departureStationName, destinationStationName);
-        }
+        return true;
     }
 }
