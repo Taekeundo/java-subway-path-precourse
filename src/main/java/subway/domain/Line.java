@@ -17,6 +17,10 @@ public class Line {
         return name;
     }
 
+    public List<Section> getSections() {
+        return Collections.unmodifiableList(sections);
+    }
+
     public void addStation(Station stationName) {
         stations.add(stationName);
     }
