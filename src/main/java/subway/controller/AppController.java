@@ -18,7 +18,7 @@ public class AppController {
             String command = inputView.readMainMenu();
 
             if (command.equalsIgnoreCase("Q")) {
-                // TODO: OutputView, print error message
+                OutputView.printProgramEnd();
                 break;
             }
 
@@ -32,7 +32,6 @@ public class AppController {
         String searchType = inputView.readSearchType();
 
         if (searchType.equalsIgnoreCase("B")) {
-            // TODO: back to the main()
             return;
         }
 
